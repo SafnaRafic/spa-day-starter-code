@@ -6,6 +6,12 @@ public class User {
     private String username;
     private String email;
     private String password;
+    private int id;
+    private static int nextId = 1;
+    public User() {
+        this.id = nextId;
+        nextId++;
+    }
 
     public String getUsername() {
         return username;
@@ -31,16 +37,22 @@ public class User {
         this.password = password;
     }
 
+    public int getId() {
+        return id;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof User)) return false;
         User user = (User) o;
-        return getPassword().equals(user.getPassword());
+        return getId() == user.getId() &&
+                Objects.equals(getPassword(), user.getPassword());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getPassword());
+        return Objects.hash(getPassword(), getId());
     }
 }

@@ -4,10 +4,24 @@
 <body>
 <div class="container body-content">
     <h2 th:text="${#strings.capitalizeWords(title)}"></h2>
-
-    <a th:href="@{/}"> Service </a>
+    <a th:href="@{/}"> Click here for Service </a>
 </div>
 
+<hr/>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>UserName</th>
+    </tr>
+    </thead>
+<!--    <tr th:each="item : ${users}">-->
+<!--        <td th:text="${item.username}"></td>-->
+
+<!--        <td>-->
+<!--            <a th:href="@{/user/index/{id}(id=${item.id})}">Details</a>-->
+<!--        </td>-->
+<!--    </tr>-->
+</table>
 
 </body>
 </html>

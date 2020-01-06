@@ -47,6 +47,7 @@ public class SpaDayController {
     @ResponseBody
     public String customerForm () {
         String html = "<form method = 'post' action='facial'>" +
+                "<h2> Service Menu </h2>" +
                 "Name: <br>" +
                 "<input type = 'text' name = 'name'>" +
                 "<br>Skin type: <br>" +
