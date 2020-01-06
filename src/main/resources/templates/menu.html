@@ -7,10 +7,11 @@
 </head>
 
 <body>
+
 <h1>My Super Fancy Spa</h1>
 <div id = "clientProfile">
     <h2>My profile</h2>
-    <p th:text="${name}" ></p>
+
     <p th:text = "${skintype}">Skin Type</p>
     <p th:text = "${manipedi}">Manipedi</p>
 </div>
@@ -44,15 +45,6 @@
         <h3>Pedicure</h3>
         <p th:replace ="fragments :: pedicureDescription"></p>
     </div>
-
-    <div class="footer">
-        <div class="square-box">
-            <div class="square-content"></div>
-
-        </div>
-    </div>
-
-
 
 </div>
 </body>
