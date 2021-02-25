@@ -27,15 +27,21 @@ public class UserController {
     @PostMapping
     public String processAddUserForm(Model model, @ModelAttribute User user, String verify) {
         // add form submission handling code here
+
         if((user.getPassword()).equals(verify)){
-            UserData.addUser(user);
+            model.addAttribute("user", user);
+            model.addAttribute("verify", verify);
+            model.addAttribute("username", user.getUsername());
+            model.addAttribute("email", user.getEmail());
+
             model.addAttribute("title","Welcome "+user.getUsername()+"!");
             model.addAttribute("users", UserData.getAll());
             return "user/index";
         }
         else {
-            model.addAttribute("title","Password does not match");
-            model.addAttribute("error", "Passwords do not match");
+
+            model.addAttribute("error","Password does not match");
+
             model.addAttribute("userName",user.getUsername());
             model.addAttribute("emailID",user.getEmail());
             return "user/add";
