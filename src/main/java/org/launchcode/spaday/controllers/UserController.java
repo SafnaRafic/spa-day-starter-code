@@ -6,6 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 @Controller
 @RequestMapping("user")
 public class UserController {
@@ -21,32 +24,34 @@ public class UserController {
         return "user/add";
     }
 
-    @PostMapping("add")
+    @PostMapping
     public String processAddUserForm(Model model, @ModelAttribute User user, String verify) {
         // add form submission handling code here
         if((user.getPassword()).equals(verify)){
-
+            UserData.addUser(user);
             model.addAttribute("title","Welcome "+user.getUsername()+"!");
-            UserData.add(user);
             model.addAttribute("users", UserData.getAll());
             return "user/index";
         }
         else {
             model.addAttribute("title","Password does not match");
+            model.addAttribute("error", "Passwords do not match");
             model.addAttribute("userName",user.getUsername());
             model.addAttribute("emailID",user.getEmail());
             return "user/add";
         }
     }
 
-//    @PostMapping("index")
-//    public String showDetails(Model model,@ModelAttribute UserData user, @PathVariable int id){
-//        for(int i=0;i<)
-//        if((user.getId()).equals(id)){
-//            model.addAttribute("userName",user.getUsername());
-//            model.addAttribute("email",user.getEmail());
-//        }
-//        return "user/details";
-//    }
+    @GetMapping("details/{userId}")
+    public String displayUser(Model model , @PathVariable int userId ){
+        User user = UserData.getById(userId);
+        model.addAttribute("username", user.getUsername());
+        model.addAttribute("email", user.getEmail());
+
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        String strDate = dateFormat.format(user.getJoinedDate());
+        model.addAttribute("joined",strDate);
+        return "user/details";
+    }
 
 }

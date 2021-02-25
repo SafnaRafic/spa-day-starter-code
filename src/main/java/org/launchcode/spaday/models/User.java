@@ -1,16 +1,28 @@
 package org.launchcode.spaday.models;
 
+import java.util.Date;
 import java.util.Objects;
 
 public class User {
     private String username;
     private String email;
     private String password;
+    private final Date joinedDate;
+
     private int id;
     private static int nextId = 1;
     public User() {
         this.id = nextId;
         nextId++;
+        this.joinedDate = new Date();
+    }
+
+    public User(String username, String email, String password) {
+        this();
+        this.username = username;
+        this.email = email;
+        this.password = password;
+
     }
 
     public String getUsername() {
@@ -41,6 +53,9 @@ public class User {
         return id;
     }
 
+    public Date getJoinedDate() {
+        return joinedDate;
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Title</title>
-</head>
+<head th:replace="fragments :: head"></head>
 <body>
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th>UserName</th>
-        <th>Email</th>
-    </tr>
-    </thead>
-    <tr th:each="item : ${users}">
-        <td th:text="${item.username}"></td>
-        <td th:text="${item.id}"></td>
 
-    </tr>
-</table>
+<h1> Welcome </h1>
+<p th:text = "${username}"></p>
+<p th:text = "${email}"></p>
+<h4 th:text = "${joined}"></h4>
+<!--<table class="table table-striped">-->
+<!--    <h1>Welcome </h1>-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        <th>UserName</th>-->
+<!--        <th>Email</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tr >-->
+<!--        <td th:text="${username}"></td>-->
+<!--        <td th:text="${email}"></td>-->
+
+<!--    </tr>-->
+<!--</table>-->
 
 </body>
 </html>
